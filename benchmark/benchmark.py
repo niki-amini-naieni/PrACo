@@ -47,10 +47,10 @@ class Benchmark:
             img.load()
 
             for class_name in self.model.split_classes[split]:
-                positive_class = self.img_class[img_filename]
-                positive_prompt = self.model.get_text_prompt(positive_class)
                 prompt = self.model.get_text_prompt(class_name)
                 if 'DAVE' in self.model_name:
+                    positive_class = self.img_class[img_filename]
+                    positive_prompt = self.model.get_text_prompt(positive_class)
                     pred_cnt, _ = self.model.infer(img, text=prompt, text_positive=positive_prompt)
                 else:
                     pred_cnt, _ = self.model.infer(img, prompt)

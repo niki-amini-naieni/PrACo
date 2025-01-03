@@ -1,13 +1,6 @@
-import os
 import torch
-import torch.nn as nn
-import argparse
-from PIL import Image
 from torchvision import transforms
-from torchvision.transforms import InterpolationMode
-import open_clip
 from .base_model import BaseModel
-import sys
 from torch.nn import DataParallel
 from dotmap import DotMap
 
@@ -21,8 +14,6 @@ SCALE_FACTOR = 60
 class DAVEModel(BaseModel):
     def __init__(self, img_directory, split_images, split_classes, model_ckpt='pretrained_models/DAVE_0_shot.pth', feat_comp_ckpt="pretrained_models/verification.pth"):
         super().__init__(img_directory, split_images, split_classes)
-
-        self.annotations = "./data/FSC147/annotation_FSC147_384.json"
 
         gpu = 0
         torch.cuda.set_device(gpu)

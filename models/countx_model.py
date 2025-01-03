@@ -1,13 +1,10 @@
-import os
 import torch
 import torch.nn as nn
 import argparse
-from PIL import Image
 from torchvision import transforms
 from torchvision.transforms import InterpolationMode
 import open_clip
 from .base_model import BaseModel
-import sys
 from .CounTX.util import misc
 from .CounTX.util.FSC147 import TTensor
 from .CounTX.models_counting_network import CountingNetwork

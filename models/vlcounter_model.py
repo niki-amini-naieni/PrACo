@@ -1,13 +1,7 @@
-import os
 import torch
 import torch.nn as nn
-import argparse
-from PIL import Image
 from torchvision import transforms
-from torchvision.transforms import InterpolationMode
-import open_clip
 from .base_model import BaseModel
-import sys
 import inflect
 import yaml
 from dotmap import DotMap

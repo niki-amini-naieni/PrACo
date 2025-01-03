@@ -1,10 +1,7 @@
-from abc import ABC, abstractmethod
 import numpy as np
 import cv2
 import torch
 from .base_model import BaseModel
-import sys, os
-from torchvision import transforms
 from PIL import Image
 from .TFPOC import clip
 from .TFPOC.shi_segment_anything import sam_model_registry

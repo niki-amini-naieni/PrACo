@@ -29,3 +29,5 @@ benchmark_results
 .git.old
 *.pt
 *.pdf
+
+.vscode

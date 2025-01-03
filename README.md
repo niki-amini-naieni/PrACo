@@ -76,10 +76,12 @@ Download links are provided below.:
   - Download verification.pth
   - Download and extract DAVE_0_shot.pth from models.zip
 - **TFPOC Weights:** [Download Link](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth)
+- **ZSC Weights:** [Download Link](https://drive.google.com/file/d/1ndKo5_E4ubHcEu5zRYJhoH_b-3V4i36b/view?usp=drive_link). Please note that we re-trained the model from scratch since the authors did not provided the model.
 
 
 ### 4. Download Model-specific Files
 - **CLIP weights:** [Download Link](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt) - Put it into the`models/VLCounter/pretrain` folder
+- **ZSC regressor weights:** [Download Link](https://drive.google.com/drive/folders/1FjkaK2EzcOdiH_N9WkGnh5c3G9xj9PmE?usp=drive_link) - Put regressor.pth into the`models/ZSC/pretrain` folder
 
 
 ## Running the Benchmark
@@ -95,7 +97,7 @@ python main.py --model <MODEL_NAME> --data_dir <DATA_DIR> --img_directory <IMG_D
 To run a model, use the following command:
 
 ```bash
-python main.py --model CounTX --data_dir ../CounTX/data/FSC/FSC_147 --img_directory ../CounTX/data/FSC/images_384_VarV2 --split test
+python main.py --model CounTX --data_dir ./data --img_directory ./data/images_384_VarV2 --split test
 ```
 
 ## Running Statistics
@@ -112,5 +114,6 @@ python main_statistics.py --data_dir <DATA_DIR> --split <SPLIT_NAME>
 - **ClipSAM**
 - **VLCounter**
 - **DAVE**
+- **ZSC**
 
 

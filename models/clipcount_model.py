@@ -1,11 +1,8 @@
-from abc import ABC, abstractmethod
 import torch
-import cv2
 import numpy as np
 import torchvision.transforms.functional as TF
 from .base_model import BaseModel
 from PIL import Image
-import sys, os
 from .CLIPCount.util import misc
 from .CLIPCount import run
 
@@ -29,7 +26,6 @@ class CLIPCountModel(BaseModel):
         """
         Implement the specific inference logic for the CLIP-Count model.
         """
-        self.model.eval()
         self.model.model = self.model.model.cuda()
         
         if isinstance(img, Image.Image):
