@@ -32,6 +32,7 @@ The repository is organized as follows:
   - `TFPOC`
   - `VLCounter`
   - `DAVE`
+  - `ZSC`
   
 - **`main.py`**: Main script to run the benchmark for a selected model.
 - **`main_statistics.py`**: Script for computing and compiling benchmark statistics across different models.
@@ -105,7 +106,7 @@ python main.py --model CounTX --data_dir ./data --img_directory ./data/images_38
 To generate statistics and final metrics for the benchmark:
 
 ```bash
-python main_statistics.py --data_dir <DATA_DIR> --split <SPLIT_NAME>
+python main_statistics.py --data_dir <DATA_DIR> --split <SPLIT_NAME> --models <MODEL_NAME>
 ```
 
 ## Available Models

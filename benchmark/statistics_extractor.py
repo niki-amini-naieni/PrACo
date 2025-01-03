@@ -21,7 +21,7 @@ class StatisticsExtractor:
         self.gt_counts_dict = None
         self.img_class = {}
         self.split_classes = {}
-        self.img_to_exclude_txt = os.path.join(data_dir, img_to_exclude_txt) if img_to_exclude_txt is not None else None
+        self.img_to_exclude_txt = img_to_exclude_txt if img_to_exclude_txt is not None else None
         self.imgs_to_exclude =  None
 
     def load_data(self):
@@ -90,7 +90,8 @@ class StatisticsExtractor:
 
         gt_counts = pd.DataFrame.from_dict(self.gt_counts_dict, orient='index', columns=['GT Count'])
         gt_counts.index.name = 'Image Name'
-        gt_counts.drop(self.imgs_to_exclude, errors='ignore', inplace=True)
+        if self.imgs_to_exclude is not None:
+            gt_counts.drop(self.imgs_to_exclude, errors='ignore', inplace=True)
         gt_counts.reset_index(inplace=True)
         pos_classes = pd.DataFrame.from_dict(pos_classes, orient='index', columns=['Positive Class'])
         pos_classes.index.name = 'Image Name'

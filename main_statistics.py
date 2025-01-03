@@ -7,9 +7,11 @@ import pandas as pd
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Run model benchmark tests.")
-parser.add_argument('--data_dir', type=str, default="./CounTX/data/FSC/FSC_147", help="Directory containing the data files.")
+parser.add_argument('--data_dir', type=str, default="./data", help="Directory containing the data files.")
 parser.add_argument('--img_to_exclude_txt', type=str, default=None, help="Path of the txt file containing images to exclude")
 parser.add_argument('--split', type=str, default="test", help="Split to be considered")
+parser.add_argument('--model', type=str, choices=['CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'all'], 
+                    help="Choose the model to use: Options: 'CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'all'", default='all')
 args = parser.parse_args()
 
 # Set up directories and file names based on the arguments
@@ -23,14 +25,14 @@ img_class_txt = "ImageClasses_FSC147.txt"
 split_classes_file = "Split_Classes_FSC147.json"
 
 # List of model names to evaluate
-model_names = ["CounTX", "CLIP-Count", "VLCounter", "TFPOC", "DAVE"]
+if args.model == 'all':
+    model_names = ["CounTX", "CLIP-Count", "VLCounter", "TFPOC", "DAVE", "ZSC"]
+else:
+    model_names = [args.model]
 
 # Loop through the model names
 stats = []
 for model_name in tqdm(model_names, desc="Evaluating Models"):
-    if model_name == "DAVE":
-        # TODO: remove this condition
-        continue
     m = "DAVE" if "DAVE" in model_name else model_name
     test_csv_filenames = {
         'test1': f'Inference_Test1_{m}_{args.split}.csv',
