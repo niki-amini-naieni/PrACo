@@ -33,6 +33,7 @@ The repository is organized as follows:
   - `VLCounter`
   - `DAVE`
   - `ZSC`
+  - `PseCo`
   
 - **`main.py`**: Main script to run the benchmark for a selected model.
 - **`main_statistics.py`**: Script for computing and compiling benchmark statistics across different models.
@@ -77,7 +78,10 @@ Download links are provided below.:
   - Download verification.pth
   - Download and extract DAVE_0_shot.pth from models.zip
 - **TFPOC Weights:** [Download Link](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth)
-- **ZSC Weights:** [Download Link](https://drive.google.com/file/d/1ndKo5_E4ubHcEu5zRYJhoH_b-3V4i36b/view?usp=drive_link). Please note that we re-trained the model from scratch since the authors did not provided the model.
+- **ZSC Weights:** [Download Link](https://drive.google.com/file/d/1ndKo5_E4ubHcEu5zRYJhoH_b-3V4i36b/view?usp=drive_link). Please note that we re-trained the model from scratch since the authors did not provid the model.
+- **PseCo Weights:** [Download Link](https://huggingface.co/Hzzone/PseCo/tree/main/data/fsc147)
+  - Download clip_text_prompt.pth
+  - Download MLP_small_box_w1_zeroshot.tar and point_decoder_vith.pth from checkpoints folder
 
 
 ### 4. Download Model-specific Files
@@ -116,5 +120,6 @@ python main_statistics.py --data_dir <DATA_DIR> --split <SPLIT_NAME> --models <M
 - **VLCounter**
 - **DAVE**
 - **ZSC**
+- **PseCo**
 
 

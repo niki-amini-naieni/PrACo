@@ -10,18 +10,22 @@ from .ZSC.models.regressor import get_regressor
 from .ZSC.FSC147_dataset import random_aug_boxes, get_image_classes
 from .ZSC.config import cfg
 
+
 class ZSCModel(BaseModel):
     def __init__(self, img_directory, split_images, split_classes, model_ckpt='pretrained_models/zsc_model_best.pth', config="models/ZSC/config/test.yaml"):
         super().__init__(img_directory, split_images, split_classes)
         self.model_name = "ZSC"
         self.img_classes = "data/ImageClasses_FSC147.txt"
         self.cls_list = get_image_classes(self.img_classes)
-        self.device = torch.device("cuda")
         cfg.merge_from_file(config)
+        if torch.cuda.is_available():
+            self.device = torch.device('cuda')
+        else:
+            self.device = torch.device('cpu')
         
         # Load model and regressor
         self.model = build_model(cfg)
-        self.model.to(self.device)
+        self.model = self.model.to(self.device)
         self.model.eval()
         self.model_imgnet = copy.deepcopy(self.model)
         checkpoint = torch.load(model_ckpt, map_location='cpu')
@@ -29,7 +33,7 @@ class ZSCModel(BaseModel):
 
         self.regressor = get_regressor(cfg)
         self.regressor.load_state_dict(torch.load('models/ZSC/pretrain/regressor.pth')) 
-        self.regressor.to(self.device)
+        self.regressor = self.regressor.to(self.device)
         self.regressor.eval()
 
         self.vae_feats = np.load('models/ZSC/checkpoints/bmnet+_ep3_epoch300_no_refiner/fsc_vae_feats.npy', allow_pickle=True)

@@ -5,8 +5,8 @@ from benchmark.benchmark import Benchmark
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Run model benchmark tests.")
-parser.add_argument('--model', type=str, choices=['CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC'], required=True, 
-                    help="Choose the model to use: Options: 'CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC'")
+parser.add_argument('--model', type=str, choices=['CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo'], required=True, 
+                    help="Choose the model to use: Options: 'CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo'")
 parser.add_argument('--data_dir', type=str, default="../CounTX/data/FSC/FSC_147", help="Directory containing the data files.")
 parser.add_argument('--img_directory', type=str, default='../CounTX/data/FSC/images_384_VarV2', help="Directory containing the images.")
 parser.add_argument('--split_classes_file', type=str, default="Split_Classes_FSC147.json", help="Filename for the split classes JSON.")
@@ -64,6 +64,10 @@ elif args.model == 'ZSC':
     from models.ZSC_model import ZSCModel
     model = ZSCModel(img_directory, split_images, split_classes)
     output_prefix = 'ZSC'
+elif args.model == 'PseCo':
+    from models.PseCo_model import PseCoModel
+    model = PseCoModel(img_directory, split_images, split_classes)
+    output_prefix = 'PseCo'
 
 # Run benchmarks
 img_class_txt_path = os.path.join(data_dir, 'ImageClasses_FSC147.txt')

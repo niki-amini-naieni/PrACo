@@ -16,5 +16,7 @@ scikit-learn
 pycocotools
 selective_search
 seaborn
+albumentations
+easydict
 git+https://github.com/openai/CLIP.git
 -e ./models/CounTX/open_clip
