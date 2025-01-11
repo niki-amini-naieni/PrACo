@@ -8,7 +8,6 @@ import cv2
 
 from .PseCo.ops.foundation_models.segment_anything import build_sam_vit_h
 from .PseCo.models import PointDecoder, ROIHeadMLP as ROIHead
-from .PseCo.ops.dump_clip_features import dump_clip_text_features
 
 
 class PseCoModel(BaseModel):
