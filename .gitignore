@@ -23,6 +23,8 @@ zero-shot-counting/
 *.pth
 *.ckpt
 
+*.safetensors
+
 data
 pretrained_models
 benchmark_results

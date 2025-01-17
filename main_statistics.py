@@ -10,8 +10,8 @@ parser = argparse.ArgumentParser(description="Run model benchmark tests.")
 parser.add_argument('--data_dir', type=str, default="./data", help="Directory containing the data files.")
 parser.add_argument('--img_to_exclude_txt', type=str, default=None, help="Path of the txt file containing images to exclude")
 parser.add_argument('--split', type=str, default="test", help="Split to be considered")
-parser.add_argument('--model', type=str, choices=['CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo', 'GroundingREC', 'all'], 
-                    help="Choose the model to use: Options: 'CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo', 'GroundingREC', 'all'", default='all')
+parser.add_argument('--model', type=str, choices=['CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo', 'GroundingREC', 'CountGD', 'all'], 
+                    help="Choose the model to use: Options: 'CounTX', 'CLIP-Count', 'TFPOC', 'VLCounter', 'DAVE', 'ZSC', 'PseCo', 'GroundingREC', 'CountGD', 'all'", default='all')
 args = parser.parse_args()
 
 # Set up directories and file names based on the arguments
@@ -26,7 +26,7 @@ split_classes_file = "Split_Classes_FSC147.json"
 
 # List of model names to evaluate
 if args.model == 'all':
-    model_names = ["CounTX", "CLIP-Count", "VLCounter", "TFPOC", "DAVE", "ZSC", "PseCo", 'GroundingREC']
+    model_names = ["CounTX", "CLIP-Count", "VLCounter", "TFPOC", "DAVE", "ZSC", "PseCo", 'GroundingREC', "CountGD"]
 else:
     model_names = [args.model]
 
