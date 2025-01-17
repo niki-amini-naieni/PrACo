@@ -53,7 +53,7 @@ class StatisticsExtractor:
         # Load txt containing images to be excluded
         if self.img_to_exclude_txt:
             with open(self.img_to_exclude_txt) as file:
-                self.imgs_to_exclude = [line.rstrip() for line in file]
+                self.imgs_to_exclude = [f"{line.rstrip()}.jpg" for line in file]
 
             # remove images to exclude from the dataframes (the images are in the row index)
             self.df_test1 = self.df_test1.drop(self.imgs_to_exclude, errors='ignore')
