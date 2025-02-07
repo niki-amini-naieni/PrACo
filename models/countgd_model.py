@@ -25,7 +25,7 @@ from base_model import BaseModel
 
 
 
-CONF_THRESH = 0.23
+#CONF_THRESH = 0.23
 
 # MODEL:
 def get_args_parser():
@@ -96,15 +96,10 @@ def get_device():
 
 # Get counting model.
 def build_model_and_transforms(args):
-    normalize = T.Compose(
-        [T.ToTensor(), T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
-    )
-    data_transform = T.Compose(
-        [
-            T.RandomResize([800], max_size=1333),
-            normalize,
-        ]
-    )
+    
+    #scales = [480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800]
+    #max_size=1333
+
     cfg = SLConfig.fromfile(os.path.join(cwd, "CountGD/cfg_app.py"))
     cfg.merge_from_dict({"text_encoder_type": os.path.join(cwd, "CountGD/checkpoints/bert-base-uncased")})
     cfg_dict = cfg._cfg_dict.to_dict()
@@ -114,6 +109,22 @@ def build_model_and_transforms(args):
             setattr(args, k, v)
         else:
             raise ValueError("Key {} can used by args only".format(k))
+
+    #scales = getattr(args, "data_aug_scales", scales)
+    #max_size = getattr(args, "data_aug_max_size", max_size)
+    
+    scales = [800]
+    max_size = 1333
+
+    normalize = T.Compose(
+        [T.ToTensor(), T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
+    )
+    data_transform = T.Compose(
+        [
+            T.RandomResize(scales, max_size=max_size),
+            normalize,
+        ]
+    )
 
     # fix the seed for reproducibility
     seed = 42
@@ -187,17 +198,19 @@ class CountGDModel(BaseModel):
             device = get_device()
         self.model, self.transform = build_model_and_transforms(args)
         self.model = self.model.to(device)
+        self.TEXT_THRESH = getattr(args, "text_threshold", 0.0)#args.get("text_threshold", 0.0)
+        self.CONF_THRESH = getattr(args, "box_threshold", 0.23)#args.get("box_threshold", 0.23)
         self.model_name = "CountGD"#"CountGD_checkpoint_fsc147_best"
         
     def get_text_prompt(self, text):
         """
-        Implement the specific prompt retrieval logic for the CLIP-Count model.
+        Implement the specific prompt retrieval logic for the CountGD model.
         """
         return f"{text}"
         
     def infer(self, img, text):
         """
-        Implement the specific inference logic for the CLIP-Count model.
+        Implement the specific inference logic for the CountGD model.
         """
         
         keywords = "" # do not handle this for now
@@ -231,12 +244,27 @@ class CountGDModel(BaseModel):
         ind_to_filter = get_ind_to_filter(text, model_output["token"][0].word_ids, keywords)
         logits = model_output["pred_logits"].sigmoid()[0][:, ind_to_filter]
         boxes = model_output["pred_boxes"][0]
-        if len(keywords.strip()) > 0:
-            box_mask = (logits > CONF_THRESH).sum(dim=-1) == len(ind_to_filter)
-        else:
-            box_mask = logits.max(dim=-1).values > CONF_THRESH
-        logits = logits[box_mask, :].cpu().numpy()
-        boxes = boxes[box_mask, :].cpu().numpy()
+        
+        #if len(keywords.strip()) > 0:
+        #    box_mask = (logits > self.CONF_THRESH).sum(dim=-1) == len(ind_to_filter)
+        #else:
+        #    box_mask = logits.max(dim=-1).values > self.CONF_THRESH
+        #logits = logits[box_mask, :].cpu().numpy()
+        #boxes = boxes[box_mask, :].cpu().numpy()
+
+        # BEGIN NEW VERSION
+        # Step 1: Filter based on box confidence threshold.
+        box_mask = logits.max(dim=-1).values > self.CONF_THRESH
+        logits = logits[box_mask, :]
+        boxes = boxes[box_mask, :]
+
+        # Step 2: Filter based on text alignment threshold.
+        text_mask = (logits > self.TEXT_THRESH).sum(dim=-1) == len(ind_to_filter)
+        logits = logits[text_mask, :].cpu().numpy()
+        boxes = boxes[text_mask, :].cpu().numpy()
+        # END NEW VERSION
+        
+
         
         # Plot results.
         (w, h) = img.size
