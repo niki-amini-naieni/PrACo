@@ -1,0 +1,17 @@
+#torch==1.13.1#1.9.0
+#torchvision==0.14.1#0.10.0
+timm==0.4.12
+termcolor
+yacs
+einops
+opencv-python-headless
+matplotlib
+torch==2.4.1
+torchvision==0.19.1
+pillow
+git+https://github.com/openai/CLIP.git
+tqdm
+sentencepiece
+spacy==3.2.6
+typing-inspect==0.8.0
+typing_extensions==4.5.0
