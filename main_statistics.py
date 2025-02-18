@@ -32,6 +32,11 @@ else:
 
 # Loop through the model names
 stats = []
+
+if os.path.exists(output_csv_path):
+    prev_stats = pd.read_csv(output_csv_path, index_col=0)#, index_col='Model'
+    stats.append(prev_stats)
+
 for model_name in tqdm(model_names, desc="Evaluating Models"):
     m = "DAVE" if "DAVE" in model_name else model_name
     test_csv_filenames = {
@@ -55,11 +60,11 @@ for model_name in tqdm(model_names, desc="Evaluating Models"):
 
     # merge the two dictionaries
     statistics = {**statistics_data_test1, **statistics_data_test2}
-    statistics = pd.DataFrame.from_dict(statistics).set_index('Model')
+    statistics = pd.DataFrame.from_dict(statistics)#.set_index('Model')
 
     stats.append(statistics)
 
 # Combine statistics for all models
-stats = pd.concat(stats, axis=0)
+stats = pd.concat(stats, axis=0, ignore_index=True)
 print(f"Saving statistics to {output_csv_path}")
 stats.to_csv(output_csv_path)
