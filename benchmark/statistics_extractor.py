@@ -75,7 +75,7 @@ class StatisticsExtractor:
             class_name = self.img_class[img_filename]
             
             positive_preds[img_filename] = self.df_test1.loc[img_filename][class_name]
-            self.df_test1.loc[img_filename][class_name] = np.nan
+            self.df_test1.loc[img_filename, class_name] = np.nan
             pos_classes[img_filename] = class_name
             
         max_negs = self.df_test1.max(axis=1)
@@ -159,8 +159,8 @@ class StatisticsExtractor:
         precision_df = min_upper_test_and_gt.div((self.df_upper_test2 + self.df_lower_test2).replace(0, np.nan))
 
         # Obtain F-score dataframe 
-        fscore_df = (2 * (precision_df * recall_df)).div((precision_df + recall_df).replace(0, np.nan))
-
+        fscore_df = (2 * (precision_df * recall_df)).div((precision_df + recall_df).infer_objects(copy=False).replace(0, np.nan))
+        
         recall_per_row = recall_df.mean(axis=1)
         precision_per_row = precision_df.mean(axis=1)
         fscore_per_row = fscore_df.mean(axis=1)
