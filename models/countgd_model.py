@@ -182,10 +182,12 @@ def get_ind_to_filter(text, word_ids, keywords):
 
     return inds_to_filter
 
+import inflect
+
 class CountGDModel(BaseModel):
     
     #model_ckpt=os.path.join(cwd, "CountGD/checkpoint_best_regular.pth")
-    def __init__(self, img_directory, split_images, split_classes, model_ckpt=os.path.join(cwd, "CountGD/checkpoints/checkpoint_fsc147_best.pth"), device=None):
+    def __init__(self, img_directory, split_images, split_classes, model_ckpt=os.path.join(cwd, "CountGD/checkpoints/checkpoint_fsc147_best.pth"), device=None, singularize:bool=True):
         super().__init__(img_directory, split_images, split_classes)
         
         parser = argparse.ArgumentParser("CountGD", parents=[get_args_parser()])
@@ -202,11 +204,20 @@ class CountGDModel(BaseModel):
         self.CONF_THRESH = getattr(args, "box_threshold", 0.23)#args.get("box_threshold", 0.23)
         self.model_name = "CountGD"#"CountGD_checkpoint_fsc147_best"
         
+        self.singularize = singularize
+        if self.singularize:
+            self.p = inflect.engine()
+        
     def get_text_prompt(self, text):
         """
         Implement the specific prompt retrieval logic for the CountGD model.
         """
-        return f"{text}"
+        if self.singularize:
+            singularized = self.p.singular_noun(text)
+            ret = singularized if singularized and text not in ["sunglasses"] else text
+            return ret
+        else:
+            return text
         
     def infer(self, img, text):
         """
