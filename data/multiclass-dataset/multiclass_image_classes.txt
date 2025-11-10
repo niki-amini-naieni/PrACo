@@ -1,0 +1,200 @@
+mcac_1.jpg	bowls,plates
+mcac_2.jpg	plates,cups
+mcac_3.jpg	plates,cups
+mcac_4.jpg	plates,cups,bowls
+mcac_6.jpg	plates,bowls
+mcac_7.jpg	plates,cups
+mcac_8.jpg	plates,forks,knives,cups,glasses,chairs
+mcac_9.jpg	plates,cups,glasses,bowls
+mcac_10.jpg	plates,bowls,glasses
+mcac_11.jpg	plates,forks,bowls,cups,knives,glasses,spoons
+mcac_12.jpg	plates,bowls,glasses,cups
+mcac_13.jpg	spoons,forks,knives
+mcac_14.jpg	spoons,forks,knives
+mcac_15.jpg	forks,spoons,knives
+mcac_16.jpg	forks,knives,spoons
+mcac_17.jpg	forks,knives
+mcac_18.jpg	forks,knives
+mcac_19.jpg	blueberries,raspberries,strawberries,cherries
+mcac_20.jpg	red currants,blueberries,raspberries,blackberries,strawberries
+mcac_21.jpg	blueberries,raspberries,blackberries
+mcac_22.jpg	blueberries,red currants,raspberries,blackberries
+mcac_23.jpg	blueberries,raspberries,blackberries,strawberries
+mcac_24.jpg	blueberries,raspberries,blackberries
+mcac_25.jpg	red currants,blueberries,blackberries,raspberries,strawberries
+mcac_26.jpg	blueberries,blackberries,strawberries,raspberries
+mcac_27.jpg	blueberries,raspberries,blackberries,cherries,strawberries
+mcac_28.jpg	red currants,blueberries,blackberries,raspberries
+mcac_29.jpg	blueberries,blackberries,strawberries
+mcac_30.jpg	raspberries,blueberries,blackberries
+mcac_31.jpg	blueberries,raspberries,blackberries
+mcac_32.jpg	red currants,blackberries,raspberries
+mcac_33.jpg	blueberries,red currants,raspberries,blackberries
+mcac_34.jpg	grapes,cherries
+mcac_35.jpg	cherries,lemons
+mcac_36.jpg	cherries,lemons,strawberries
+mcac_37.jpg	cherries,lemons
+mcac_38.jpg	apples,pears
+mcac_39.jpg	bananas,apples,pears
+mcac_40.jpg	grapes,bananas,pears,apples
+mcac_41.jpg	apples,bananas,pears
+mcac_42.jpg	oranges,apples,bananas,pears,lemons
+mcac_43.jpg	oranges,bananas,apples
+mcac_44.jpg	grapes,apples,oranges,pears,bananas
+mcac_45.jpg	apples,pears
+mcac_46.jpg	pears,apples
+mcac_47.jpg	apples,pears
+mcac_48.jpg	apples,pears
+mcac_50.jpg	oranges,lemons
+mcac_51.jpg	lemons,oranges,apples
+mcac_53.jpg	oranges,apples
+mcac_54.jpg	lemons,apples
+mcac_55.jpg	apples,lemons
+mcac_56.jpg	lemons,apples
+mcac_57.jpg	people,beach umbrellas,chairs
+mcac_58.jpg	people,beach umbrellas,chairs
+mcac_59.jpg	people,beach umbrellas
+mcac_60.jpg	people,beach umbrellas,chairs
+mcac_61.jpg	people,beach umbrellas,chairs
+mcac_62.jpg	beach umbrellas,chairs,people
+mcac_63.jpg	beach umbrellas,people,chairs
+mcac_65.jpg	people,cars
+mcac_66.jpg	cars,people
+mcac_68.jpg	people,cars
+mcac_69.jpg	people,cars
+mcac_70.jpg	people,cars,motorbikes
+mcac_72.jpg	cars,people,motorbikes
+mcac_73.jpg	people,cars
+mcac_74.jpg	people,cars,bicycles
+mcac_75.jpg	motorbikes,people,cars,trucks
+mcac_76.jpg	people,cars
+mcac_77.jpg	people,cars
+mcac_78.jpg	people,cars,beach umbrellas
+mcac_79.jpg	people,cars
+mcac_80.jpg	people,motorbikes,cars
+mcac_81.jpg	people,motorbikes,cars,trucks,bicycles
+mcac_82.jpg	people,motorbikes,cars,trucks
+mcac_83.jpg	cars,motorbikes,people
+mcac_84.jpg	cars,people,motorbikes
+mcac_85.jpg	people,motorbikes
+mcac_86.jpg	motorbikes,bicycles
+mcac_87.jpg	motorbikes,people,cars,bicycles
+mcac_88.jpg	cars,people,motorbikes
+mcac_89.jpg	people,motorbikes
+mcac_90.jpg	people,motorbikes
+mcac_91.jpg	people,motorbikes
+mcac_92.jpg	people,motorbikes
+mcac_93.jpg	people,cars,motorbikes
+mcac_94.jpg	people,motorbikes,bicycles,cars
+mcac_95.jpg	people,motorbikes
+mcac_96.jpg	people,motorbikes
+mcac_97.jpg	people,motorbikes,bicycles
+mcac_98.jpg	guitars,amplifiers
+mcac_99.jpg	guitars,amplifiers
+mcac_100.jpg	guitars,amplifiers,chairs
+mcac_101.jpg	guitars,amplifiers
+mcac_102.jpg	amplifiers,guitars
+mcac_103.jpg	amplifiers,guitars
+mcac_104.jpg	guitars,amplifiers
+mcac_105.jpg	amplifiers,guitars
+mcac_106.jpg	guitars,amplifiers
+mcac_107.jpg	guitars,amplifiers
+mcac_108.jpg	amplifiers,guitars
+mcac_109.jpg	guitars,amplifiers,people
+mcac_110.jpg	guitars,people
+mcac_111.jpg	guitars,people
+mcac_113.jpg	cats,dogs
+mcac_114.jpg	cats,dogs
+mcac_115.jpg	dogs,cats
+mcac_116.jpg	cats,dogs
+mcac_118.jpg	dogs,cats
+mcac_119.jpg	dogs,people
+mcac_120.jpg	dogs,people
+mcac_121.jpg	dogs,people
+mcac_122.jpg	dogs,people
+mcac_123.jpg	dogs,people
+mcac_124.jpg	dogs,people
+mcac_125.jpg	dogs,people,guitars
+mcac_126.jpg	cats,people
+mcac_127.jpg	windows,balconies
+mcac_128.jpg	windows,balconies
+mcac_129.jpg	windows,balconies
+mcac_130.jpg	windows,balconies
+mcac_131.jpg	windows,balconies
+mcac_132.jpg	balconies,windows
+mcac_134.jpg	windows,balconies
+mcac_135.jpg	windows,balconies
+mcac_136.jpg	windows,balconies
+mcac_137.jpg	windows,balconies
+mcac_138.jpg	balconies,windows
+mcac_142.jpg	chairs,desks
+mcac_143.jpg	desks,chairs
+mcac_144.jpg	desks,chairs
+mcac_145.jpg	desks,chairs
+mcac_146.jpg	desks,chairs
+mcac_147.jpg	chairs,desks
+mcac_148.jpg	lighters,cigaretts
+mcac_149.jpg	cigaretts,lighters
+mcac_150.jpg	cigaretts,lighters
+mcac_151.jpg	keys,padlocks
+mcac_152.jpg	keys,padlocks
+mcac_153.jpg	keys,padlocks
+mcac_154.jpg	keys,padlocks
+mcac_155.jpg	keys,padlocks
+mcac_156.jpg	keys,padlocks
+mcac_157.jpg	padlocks,keys
+mcac_158.jpg	keys,padlocks
+mcac_159.jpg	keys,padlocks
+mcac_160.jpg	keys,padlocks
+mcac_162.jpg	keys,key holders
+mcac_163.jpg	key holders,keys
+mcac_164.jpg	keys,key holders
+mcac_167.jpg	dogs,cows
+mcac_168.jpg	cows,dogs
+mcac_169.jpg	sheeps,dogs
+mcac_170.jpg	sheeps,dogs
+mcac_171.jpg	sheeps,goats,dogs
+mcac_172.jpg	sheeps,dogs,people
+mcac_173.jpg	boats,cars,motorbikes,people
+mcac_174.jpg	boats,cars
+mcac_176.jpg	people,boats,cars,motorbikes
+mcac_178.jpg	cars,boats
+mcac_185.jpg	cars,trucks
+mcac_186.jpg	cars,trucks
+mcac_187.jpg	cars,trucks
+mcac_188.jpg	cars,trucks
+mcac_189.jpg	cars,trucks
+mcac_190.jpg	cars,trucks
+mcac_191.jpg	cars,people,trucks
+mcac_192.jpg	cars,trucks
+mcac_193.jpg	cars,trucks
+mcac_194.jpg	trucks,cars
+mcac_195.jpg	trucks,cars
+mcac_196.jpg	cars,trucks
+mcac_197.jpg	cars,trucks
+mcac_198.jpg	pens,rulers,pencils
+mcac_200.jpg	pens,rulers,pencils
+mcac_201.jpg	pens,pencils,rulers
+mcac_202.jpg	pens,rulers,pencils
+mcac_203.jpg	pencils,rulers
+mcac_204.jpg	rulers,pens
+mcac_205.jpg	pencils,rulers
+mcac_206.jpg	rulers,pencils
+mcac_210.jpg	plates,bowls,glasses
+mcac_211.jpg	plates,bowls,cups,glasses
+mcac_212.jpg	spoons,forks,knives
+mcac_213.jpg	forks,knives,spoons
+mcac_214.jpg	spoons,forks,knives
+mcac_215.jpg	people,chairs,beach umbrellas
+mcac_216.jpg	people,beach umbrellas
+mcac_218.jpg	guitars,amplifiers
+mcac_219.jpg	sheeps,dogs
+mcac_220.jpg	sheeps,dogs
+mcac_222.jpg	people,motorbikes
+mcac_223.jpg	people,motorbikes,cars,bicycles
+mcac_224.jpg	people,boats
+mcac_225.jpg	people,boats,bicycles
+mcac_226.jpg	people,boats
+mcac_227.jpg	people,boats
+mcac_228.jpg	lemons,apples
+mcac_229.jpg	lemons,apples
