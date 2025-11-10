@@ -9,11 +9,25 @@ import json
 PREDICTION_PRECISION = 2
 
 class Benchmark:
-    def __init__(self, model, img_class_txt_path):
+    def __init__(self, model, img_class_txt_path, benchmark_results_dir="benchmark_results", img_class_dict=None):
+        """
+        Initialize the Benchmark with a model and image class information.
+        Args:
+            model: The model to be benchmarked. It should have attributes:
+                - model_name
+                - img_directory
+                - split_images
+                - split_classes
+                - get_text_prompt(prompt)
+                - infer(image, prompt, text_positive=None)
+            img_class_txt_path: Path to the image classes TXT file.
+            benchmark_results_dir: Optional directory to store benchmark results.
+            img_class_dict: Optional dictionary mapping image filenames to their classes.
+        """
         self.model = model
         
         self.model_name = model.model_name
-        self.benchmark_results_dir = "benchmark_results"
+        self.benchmark_results_dir = benchmark_results_dir
         
         if not os.path.exists(self.benchmark_results_dir):
             os.makedirs(self.benchmark_results_dir)
@@ -21,15 +35,18 @@ class Benchmark:
         if not os.path.exists(os.path.join(self.benchmark_results_dir, self.model_name)):
             os.makedirs(os.path.join(self.benchmark_results_dir, self.model_name))
 
-        # Load Image Class .txt
-        self.img_class = {}
-        with open(img_class_txt_path, 'r') as file:
-            for line in file:
-                line = line.strip().split('\t')
-                if len(line) == 2:
-                    img_name, label = line
-                    # img_id = img_name.split(".")[0]
-                    self.img_class[img_name] = label
+        if img_class_dict is not None:
+            self.img_class = img_class_dict.copy()
+        else:
+            # Load Image Class .txt
+            self.img_class = {}
+            with open(img_class_txt_path, 'r') as file:
+                for line in file:
+                    line = line.strip().split('\t')
+                    if len(line) == 2:
+                        img_name, label = line
+                        # img_id = img_name.split(".")[0]
+                        self.img_class[img_name] = label
 
     def run_negative_label_test(self, output_csv, split="test", force=False):
         output_file = os.path.join(self.benchmark_results_dir, self.model_name, output_csv)
