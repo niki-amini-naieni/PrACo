@@ -49,6 +49,7 @@ class Benchmark:
                         self.img_class[img_name] = label
 
     def run_negative_label_test(self, output_csv, split="test", force=False):
+        img_classes = self.model.split_classes[split]
         def extract_random_img(class_name):
             filtered_img_classes = [key for key, value in img_classes.items() if value == class_name]
             img_filename = random.choice(filtered_img_classes)
