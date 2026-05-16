@@ -71,8 +71,8 @@ class Benchmark:
             img.load()
 
             for class_name in self.model.split_classes[split]:
-                prompt = self.model.get_text_prompt(class_name)
                 if 'DAVE' in self.model_name:
+                    prompt = self.model.get_text_prompt(class_name)
                     positive_class = self.img_class[img_filename]
                     positive_prompt = self.model.get_text_prompt(positive_class)
                     pred_cnt, _ = self.model.infer(img, text=prompt, text_positive=positive_prompt)
@@ -83,14 +83,15 @@ class Benchmark:
                     neg_exemplars = [self.model.synthetic_exemplars[img2_filename]]
                     pos_exemplar_img = Image.open(os.path.join(self.model.synthetic_exemplars_folder, img_filename)).convert("RGB")
                     neg_exemplar_img = Image.open(os.path.join(self.model.synthetic_exemplars_folder, img2_filename)).convert("RGB")
-                    negative_prompt = self.model.get_text_prompt(class_name, img_filename)
+                    negative_prompt = self.model.get_text_prompt(class_name, img2_filename)
                     positive_class = self.img_class[img_filename]
                     positive_prompt = self.model.get_text_prompt(positive_class, img_filename)
-                    if negative_prompt == positive_prompt:
+                    if positive_class == class_name:
                         pred_cnt, _ = self.model.infer(img, positive_prompt, None, pos_exemplar_img, None, pos_exemplars, None)
                     else:
                         pred_cnt, _ = self.model.infer(img, negative_prompt, positive_prompt, neg_exemplar_img, pos_exemplar_img, neg_exemplars, pos_exemplars) # Negatives and positives are switched for negative label test
                 else:
+                    prompt = self.model.get_text_prompt(class_name)
                     pred_cnt, _ = self.model.infer(img, prompt)
                 df.at[img_filename, class_name] = round(pred_cnt, PREDICTION_PRECISION)
 
@@ -157,8 +158,6 @@ class Benchmark:
                 img2.load()
                 collage = create_collage(img, img2, type="vertical")
 
-                prompt = self.model.get_text_prompt(img_classes[img_filename])
-
                 if 'CountGDPlusPlus' in self.model_name:
                     # Get the synthetic exemplars generated with only text
                     pos_exemplars = [self.model.synthetic_exemplars[img_filename]] # Add a dimension for number of exemplars
@@ -169,6 +168,7 @@ class Benchmark:
                     neg_prompt = self.model.get_text_prompt(class_name, img2_filename)
                     _, density_map_tensor = self.model.infer(collage, pos_prompt, neg_prompt, pos_exemplar_img, neg_exemplar_img, pos_exemplars, neg_exemplars)
                 else:
+                    prompt = self.model.get_text_prompt(img_classes[img_filename])
                     _, density_map_tensor = self.model.infer(collage, prompt)
 
                 half_height = density_map_tensor.size(dim=0)//2
