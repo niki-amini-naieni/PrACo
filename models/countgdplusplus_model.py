@@ -46,6 +46,7 @@ def get_args_parser():
     # dataset parameters
     parser.add_argument("--remove_difficult", action="store_true")
     parser.add_argument("--fix_size", action="store_true")
+    parser.add_argument("--synth_exemplar_folder", type=str, default="synthetic_exemplars", help="name of folder containing synthetic exemplars and JSON file with corresponding box coordinates")
 
     # training parameters
     parser.add_argument("--note", default="", help="add some notes to the experiment")
@@ -401,6 +402,11 @@ class CountGDPlusPlusModel(BaseModel):
         self.TEXT_THRESH = getattr(args, "text_threshold", 0.0)#args.get("text_threshold", 0.0)
         self.CONF_THRESH = getattr(args, "box_threshold", 0.23)#args.get("box_threshold", 0.23)
         self.model_name = "CountGDPlusPlus"#"CountGD_checkpoint_fsc147_best"
+
+        # Load synthetic exemplars (generated using only text).
+        self.synthetic_exemplars_folder = args.synth_exemplar_folder
+        with open(os.path.join(self.synthetic_exemplars_folder, "generated_exemplars.json"), 'r') as f:
+            self.synthetic_exemplars = json.load(f)
         
         self.singularize = singularize
         if self.singularize:
