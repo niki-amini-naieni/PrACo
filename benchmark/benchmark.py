@@ -86,10 +86,14 @@ class Benchmark:
                     negative_prompt = self.model.get_text_prompt(class_name, img2_filename)
                     positive_class = self.img_class[img_filename]
                     positive_prompt = self.model.get_text_prompt(positive_class, img_filename)
-                    if positive_class == class_name:
+                    if positive_class == class_name:                        
+                        print("Counting " + positive_prompt + " with no negative, same class as in the image")
                         pred_cnt, _ = self.model.infer(img, positive_prompt, None, pos_exemplar_img, None, pos_exemplars, None)
+                        print("Pred Count: " + str(pred_cnt))
                     else:
+                        print("Counting " + negative_prompt + " in an image with " + positive_prompt)
                         pred_cnt, _ = self.model.infer(img, negative_prompt, positive_prompt, neg_exemplar_img, pos_exemplar_img, neg_exemplars, pos_exemplars) # Negatives and positives are switched for negative label test
+                        print("Pred Count: " + str(pred_cnt))
                 else:
                     prompt = self.model.get_text_prompt(class_name)
                     pred_cnt, _ = self.model.infer(img, prompt)
@@ -177,6 +181,8 @@ class Benchmark:
 
                 pred_cnt_up = torch.sum(upper_density).item()
                 pred_cnt_low = torch.sum(lower_density).item()
+                print("Pos Count: " + str(pred_cnt_up))
+                print("Neg Count: " + str(pred_cnt_low))
 
                 df_upper.at[img_filename, class_name] = round(pred_cnt_up, PREDICTION_PRECISION)
                 df_lower.at[img_filename, class_name] = round(pred_cnt_low, PREDICTION_PRECISION)
