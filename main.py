@@ -90,7 +90,7 @@ img_class_txt_path = os.path.join(data_dir, 'ImageClasses_FSC147.txt')
 benchmark = Benchmark(model, img_class_txt_path)
 
 output_csv = f'Inference_Test1_{output_prefix}_{args.split}.csv'
-benchmark.run_negative_label_test(output_csv, split=args.split)
+benchmark.run_negative_label_test(img_classes, output_csv, split=args.split)
 
 output_upper_csv = f'Inference_Test2_Upper_{output_prefix}_{args.split}.csv'
 output_lower_csv = f'Inference_Test2_Lower_{output_prefix}_{args.split}.csv'
