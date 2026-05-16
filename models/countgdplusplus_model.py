@@ -3,6 +3,7 @@ import random
 import os
 from PIL import Image, ImageDraw, ImageFont
 from itertools import cycle
+import json
 cwd = os.path.dirname(__file__)
 
 import sys
