@@ -404,7 +404,7 @@ class CountGDPlusPlusModel(BaseModel):
         self.model_name = "CountGDPlusPlus"#"CountGD_checkpoint_fsc147_best"
 
         # Load synthetic exemplars (generated using only text).
-        self.synthetic_exemplars_folder = args.synth_exemplar_folder
+        self.synthetic_exemplars_folder = os.path.join(cwd, args.synth_exemplar_folder)
         with open(os.path.join(self.synthetic_exemplars_folder, "generated_exemplars.json"), 'r') as f:
             self.synthetic_exemplars = json.load(f)
         
