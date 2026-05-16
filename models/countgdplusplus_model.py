@@ -46,7 +46,7 @@ def get_args_parser():
     # dataset parameters
     parser.add_argument("--remove_difficult", action="store_true")
     parser.add_argument("--fix_size", action="store_true")
-    parser.add_argument("--synth_exemplar_folder", type=str, default="synthetic_exemplars", help="name of folder containing synthetic exemplars and JSON file with corresponding box coordinates")
+    parser.add_argument("--synth_exemplar_folder", type=str, default="CountGDPlusPlus/synthetic_exemplars", help="name of folder containing synthetic exemplars and JSON file with corresponding box coordinates")
 
     # training parameters
     parser.add_argument("--note", default="", help="add some notes to the experiment")
