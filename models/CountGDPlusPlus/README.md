@@ -77,7 +77,7 @@ pip install --no-build-isolation 'git+https://github.com/facebookresearch/detect
 ## Reproduce Results From Paper
 Here we show how to reproduce the CountGD++ results on the PrACo benchmark. To reproduce results on the other benchmarks in the CountGD++ paper, please refer to the official CountGD++ repository [here](https://github.com/niki-amini-naieni/CountGDPlusPlus/).
 
-To test the setting given both positive and negative text, run the following commands from inside the PrACo repository. Note that this setting uses both synthetic and pseudo-exemplars, obtained using only text.
+To test the setting given both positive and negative text, run the following commands from inside the PrACo repository. Note that this setting uses both synthetic and pseudo-exemplars, obtained using only text. Please download the synthetic exemplars for FSC-147 from [here](https://drive.google.com/file/d/1XyE77D0bxEKDsPYvpaeD6KyXnSLye1Qg/view?usp=sharing). Unzip the folder inside the ```CountGDPlusPlus``` folder.
 
 ```
 nohup python -u main.py --model CountGDPlusPlus --data_dir ./data --img_directory ./data/images_384_VarV2 --split test >>./test_countgdplusplus.log 2>&1 &
@@ -87,7 +87,7 @@ nohup python -u main.py --model CountGDPlusPlus --data_dir ./data --img_director
 python main_statistics.py --data_dir data --split test --model CountGDPlusPlus
 ```
 
-The results from these commands should produce the following numbers in ```final_metrics_test.csv```:
+The results from these commands should produce the following output in ```final_metrics_test.csv```:
 
 ```
 ,Model,AvgNP,AvgNMN,PCCN,MAE,RMSE,AvgCntRecall,AvgCntPrecision,AvgCntFscore
